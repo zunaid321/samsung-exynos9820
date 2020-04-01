@@ -8,7 +8,7 @@ jobs:
 
     strategy:
       matrix:
-        model: [ "G973F" ]
+        model: [ "G975F" ]
 
     steps:
     - uses: actions/checkout@v1
@@ -30,9 +30,12 @@ jobs:
     - name: Kernel Configure
       run: |
         ./build config                   \
+                os_patch_level=2099-12 \
                 model=${{ matrix.model}} \
-                name=CRUEL-V3.2          \
-                +magisk                  \
+                name=CRUEL-V3.2-Zunaid-CTC9-LOS          \
+                +magisk+canary   \
+                +1000hz          \
+                +always_permit   \
                 +nohardening             \
                 +ttl                     \
                 +wireguard               \
